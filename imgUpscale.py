@@ -2,7 +2,6 @@ import cv2
 import numpy as np
 import os
 import argparse
-import matplotlib.pyplot as plt
 from math import ceil
 
 def sharpen(img):
@@ -36,6 +35,9 @@ def scale_up_img(img, min_height, min_width):
     height, width, color = img.shape
     img_resize = img
     max_jump = 200
+
+    if height > min_height and width > min_width:
+        return img
 
     #scale up to keep aspect ratio, take steps to get there and sharpen as go
     scale = max(ceil(min_width / width),\
